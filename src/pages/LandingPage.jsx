@@ -27,9 +27,8 @@ const LandingPage = () => {
         <h1 className="text-[13vh] text-[#b8b8b8] italic font-nexus font-medium"
           >BPIT</h1>
           <h1 className="text-[13vh] text-[#b8b8b8] italic font-nexus font-medium"
-          >Nexus</h1>
+          >Alumni</h1>
         </div>
-
           <p className="text-[7vh] italic font-nexus font-medium text-white">
             Bridging Generations, Building Futures
           </p>

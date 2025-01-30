@@ -11,7 +11,6 @@ const LandingPage = () => {
   const handleAlumniClick = () => {
     navigate('/alumni-home');
   };
-
   return (
     <div>
       <div

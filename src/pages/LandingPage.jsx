@@ -1,16 +1,8 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import landingpagepic from '../assets/landingpagepic.avif';
 
 const LandingPage = () => {
-  const navigate = useNavigate();
-
-  const handleStudentClick = () => {
-    navigate('/student-home');
-  };
-  const handleAlumniClick = () => {
-    navigate('/alumni-home');
-  };
   return (
     <div>
       <div
@@ -33,17 +25,17 @@ const LandingPage = () => {
             Bridging Generations, Building Futures
           </p>
           <div className="mt-8 flex gap-6 justify-center">
-            <button
-              onClick={handleStudentClick}
-              className="px-6 font-nexus text-xl py-3 border-white border-3 border-solid font-semibold text-white hover:bg-white hover:text-gray-700 rounded-xl transition-all duration-400 ease-in-out"
+            <Link to="/student"
+             
+              className="px-6 font-nexus text-xl py-3 border-white border-3 border-solid font-semibold text-white hover:bg-white hover:text-gray-700 rounded-lg transition-all duration-400 ease-in-out"
             >
               Join as a Student
-            </button>
-            <button
-            onClick={handleAlumniClick}
-            className="px-6 font-nexus text-xl py-3 bg-blend-darken border-white border-3 border-solid font-semibold text-white hover:bg-white hover:text-gray-700 rounded-xl transition-all duration-400 ease-in-out">
+            </Link>
+            <Link
+              to="/alumni"
+            className="px-6 font-nexus text-xl py-3 bg-blend-darken border-white border-3 border-solid font-semibold text-white hover:bg-white hover:text-gray-700 rounded-lg transition-all duration-400 ease-in-out">
               Join as an Alumni
-            </button>
+            </Link>
           </div>
         </div>
       </div>

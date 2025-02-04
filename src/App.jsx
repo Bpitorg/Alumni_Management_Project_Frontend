@@ -4,7 +4,7 @@ import LandingPage from './pages/LandingPage'
 import StudentHomepage from './pages/Homepage/StudentHomepage'
 import AlumniHomepage from './pages/Homepage/AlumniHomepage'
 import SignUp from './pages/SignUp'
-import SignIn from './pages/SignIn'
+import LogIn from './pages/LogIN'
 import StudentPortfolio from './pages/StudentPortfolio'
 
 const App = () => {
@@ -14,7 +14,7 @@ const App = () => {
       <Route path="/student" element={<StudentHomepage />} />
       <Route path="/alumni" element={<AlumniHomepage />}/> 
       <Route path="/signup" element={<SignUp />} />
-      <Route path="/signin" element={<SignIn />} />
+      <Route path="/login" element={<LogIn />} />
       <Route path="/student-portfolio" element={<StudentPortfolio />} />
 
 

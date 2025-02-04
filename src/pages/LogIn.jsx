@@ -3,7 +3,7 @@ import SignInPic from "../assets/SignInPic.svg";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 
-const SignIn = () => {
+const LogIn = () => {
   const formik = useFormik({
     initialValues: {
       emailOrUsername: "",
@@ -62,10 +62,10 @@ const SignIn = () => {
                 </div>
               </div>
 
-              <div className="mt-4">
-                <button type="submit" className="font-medium w-full p-2 bg-[#6C63FF] text-white rounded-md">
-                  SIGN IN
-                </button>
+              <div className="mt-4 flex w-full">
+                <Link to="/student-portfolio" className="font-medium flex justify-center w-full p-2 bg-[#6C63FF] text-white rounded-md">
+                  LOG IN
+                </Link>
               </div>
             </form>
             <div>
@@ -85,4 +85,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default LogIn;

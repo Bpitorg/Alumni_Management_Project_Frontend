@@ -10,6 +10,7 @@ import AlumniSignUp from './pages/alumni/AlumniSignUp'
 import AlumniDashboard from './pages/alumni/AlumniDashboard'
 import StudentDashboard from './pages/students/StudentDashboard'
 import MentorshipPage from './pages/mentorship/MentorshipPage'
+import MentorshipForm from './pages/mentorship/MentorshipForm'
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/alumni-dashboard" element={<AlumniDashboard />} />
       <Route path="/student-dashboard" element={<StudentDashboard />} />
       <Route path="/mentor-page" element={<MentorshipPage/>}/>
+      <Route path="/mentor-form" element={<MentorshipForm/>}/>
     </Routes>
   )
 }

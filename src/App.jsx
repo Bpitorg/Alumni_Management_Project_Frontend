@@ -10,6 +10,9 @@ import AlumniSignUp from './pages/alumni/AlumniSignUp'
 import AlumniDashboard from './pages/alumni/AlumniDashboard'
 import StudentDashboard from './pages/students/StudentDashboard'
 import MentorshipPage from './pages/mentorship/MentorshipPage'
+import AchievementsListings from './pages/achievements/AchievementsListings'
+import AddAchievement from './pages/achievements/AddAchievement'
+import IndividualAchievement from './pages/achievements/IndividualAchievement'
 
 const App = () => {
   return (
@@ -24,6 +27,9 @@ const App = () => {
       <Route path="/alumni-dashboard" element={<AlumniDashboard />} />
       <Route path="/student-dashboard" element={<StudentDashboard />} />
       <Route path="/mentor-page" element={<MentorshipPage/>}/>
+      <Route path="/all-achievements" element={<AchievementsListings/>}/>
+      <Route path="/add-achievement" element={<AddAchievement/>}/>
+      <Route path="/achievement/id" element={<IndividualAchievement/>}/>
     </Routes>
   )
 }

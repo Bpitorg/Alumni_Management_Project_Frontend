@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
+import AchievementForm from "../../page-components/achievements/AchievementForm";
 
 const AddAchievement = () => {
-  return (
-    <div>AddAchievement</div>
-  )
-}
+  const handleFormSubmit = (data) => {
+    console.log("Achievement Data:", data);
+  };
 
-export default AddAchievement
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <AchievementForm onSubmit={handleFormSubmit} />
+    </div>
+  );
+};
+
+export default AddAchievement;

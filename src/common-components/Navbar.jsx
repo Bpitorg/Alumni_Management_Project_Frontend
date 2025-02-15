@@ -40,3 +40,4 @@ const Navbar = ({ logo, links = [] }) => {
 };
 
 export default Navbar;
+

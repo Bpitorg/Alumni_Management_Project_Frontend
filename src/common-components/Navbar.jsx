@@ -1,34 +1,43 @@
 import React from "react";
-import LoginComponent from "../page-components/LoginComponent";
-import { Link } from "react-router-dom";
+import { AppBar, Toolbar, Button, IconButton } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router-dom";
 
-const Navbar = () => {
-  const navLinks = [
-    { label: "Home", to: "/home" },
-    { label: "Careers", to: "/careers" },
-    { label: "Community", to: "/community" },
-    { label: "Events", to: "/events" },
-  ];
-  
+const Navbar = ({ logo, links = [] }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="mt-4 mx-3">
-      <nav className="bg-gray-200 font-poppins shadow-gray-300 shadow-md flex justify-between rounded-3xl p-4 w-full">
-        <div className="font-nexus text-xl font-medium">BPITAlumni</div>
-        <ul className="flex justify-between">
-          {navLinks.map((link, index) => (
-            <li
-              className="mx-4 relative"
+    <AppBar position="static" className="bg-white shadow-md">
+      <Toolbar className="flex justify-between">
+        {/* Left: Logo */}
+        <div className="flex items-center">
+          <img src={logo} alt="Logo" className="h-10 w-auto" />
+        </div>
+
+        {/* Middle: Navigation Links */}
+        <div className="hidden md:flex space-x-6">
+          {links.map((link, index) => (
+            <Button
+              key={index}
+              color="inherit"
+              className="text-gray-700 hover:text-orange-500"
+              onClick={link.onClick} // ✅ Use onClick from props
             >
-              <Link to={link.to} className="text-black hover:font-medium hover:text-lg hover:underline hover:underline-offset-8">
-                {link.label}
-              </Link>
-            </li>
+              {link.label}
+            </Button>
           ))}
-        </ul>
-        <LoginComponent />
-      </nav>
-    </div>
+        </div>
+
+        {/* Right: Menu Icon (for Mobile) */}
+        <div className="md:hidden">
+          <IconButton color="inherit">
+            <MenuIcon className="text-gray-700" />
+          </IconButton>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 
 export default Navbar;
+

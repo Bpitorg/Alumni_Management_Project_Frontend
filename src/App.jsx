@@ -11,6 +11,9 @@ import AlumniDashboard from './pages/alumni/AlumniDashboard'
 import StudentDashboard from './pages/students/StudentDashboard'
 import MentorshipPage from './pages/mentorship/MentorshipPage'
 import MentorshipForm from './pages/mentorship/MentorshipForm'
+import AchievementsListings from './pages/achievements/AchievementsListings'
+import AddAchievement from './pages/achievements/AddAchievement'
+import IndividualAchievement from './pages/achievements/IndividualAchievement'
 
 const App = () => {
   return (
@@ -26,6 +29,9 @@ const App = () => {
       <Route path="/student-dashboard" element={<StudentDashboard />} />
       <Route path="/mentor-page" element={<MentorshipPage/>}/>
       <Route path="/mentor-form" element={<MentorshipForm/>}/>
+      <Route path="/all-achievements" element={<AchievementsListings/>}/>
+      <Route path="/add-achievement" element={<AddAchievement/>}/>
+      <Route path="/achievement/id" element={<IndividualAchievement/>}/>
     </Routes>
   )
 }

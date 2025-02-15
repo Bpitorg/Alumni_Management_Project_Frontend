@@ -2,9 +2,11 @@ import React from 'react'
 import Navbar from '../../common-components/Navbar'
 import Mentorhsip from '../../assets/Mentorhsip.avif'
 import Footer from '../../common-components/Footer';
+import { useNavigate } from 'react-router-dom';
 
 
 function MentorshipPage() {
+  const navigate=useNavigate();
     const mentorshipPrograms = [
         { name: "Google Summer of Code (GSoC)", link: "https://summerofcode.withgoogle.com/" },
         { name: "Outreachy", link: "https://www.outreachy.org/" },
@@ -16,9 +18,15 @@ function MentorshipPage() {
         { name: "She Codes", link: "https://www.shecodes.io/" },
         { name: "Amazon Future Engineer", link: "https://www.amazonfutureengineer.com/" },
       ];
+    const links=[
+      { label: "Home", onClick: () => navigate("/") },
+    { label: "Mentor", onClick: () => navigate("/mentor-page") },
+    { label: "Interviews", onClick: () => navigate("/all-interviews") }
+   
+    ]
     return (
         <>
-      <Navbar />
+      <Navbar logo="https://media.collegedekho.com/media/img/institute/logo/1440576082.png" links={links} />
       <div className="relative w-full">
         <img
           src={Mentorhsip}

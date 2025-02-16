@@ -10,7 +10,7 @@ import ProjectPage from "../page-components/student-portfolio/ProjectPage";
 import ContactMe from "../page-components/student-portfolio/ContactMe";
 const StudentPortfolio = () => {
   return (
-    <div className="h-screen bg-gray-100 w-full font-poppins">
+    <div className="h-screen w-full font-poppins">
       <Navbar />
       <div className="profile h-full rounded-3xl flex gap-[8%] bg-gray-200 mx-4 mt-6">
         <ProfileHeader />
@@ -29,11 +29,9 @@ const StudentPortfolio = () => {
       <div className="projects h-full rounded-3xl flex flex-col gap-[8%] bg-gray-200 mx-4 mt-3 p-3">
         <ProjectPage/>
       </div>
-      <div className="projects rounded-3xl flex flex-col justify-center items-center gap-[8%] bg-gray-200 mx-4 mt-3 p-3">
+      <div className="contact rounded-3xl flex flex-col justify-center items-center gap-[8%] bg-gray-200 mx-4 mt-3 p-3">
       <ContactMe/>
       </div>
-     
-
     </div>
   );
 };

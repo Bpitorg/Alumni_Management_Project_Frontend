@@ -1,5 +1,4 @@
 import React from 'react';
-
 const ProjectCard = ({ project }) => {
   return (
     <div className="project-card bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transition-shadow">
@@ -9,7 +8,7 @@ const ProjectCard = ({ project }) => {
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="text-blue-500 hover:text-blue-700"
+        className="text-black hover:text-blue-700"
       >
         View Project
       </a>

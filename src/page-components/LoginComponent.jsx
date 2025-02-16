@@ -1,21 +1,24 @@
 import { useState } from "react";
+import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
+
 const LoginComponent = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true); // Mock authentication state
 
   return (
-    <div className="mx-4">
+    <div>
       {isLoggedIn ? (
-        <Link to="/student-portfolio" className="">
+        <Button component={Link} to="/student-portfolio" variant="text" sx={{ color: "gray", "&:hover": { color: "orange" } }}>
           Profile
-        </Link>
+        </Button>
       ) : (
-        <Link to="/login" className="relative px-4 py-2 border-gray-400 font-medium text-lg ">
+        <Button component={Link} to="/login" variant="outlined" sx={{ borderColor: "gray", color: "gray", "&:hover": { borderColor: "orange", backgroundColor: "rgba(255,165,0,0.1)" } }}>
           Login
-        </Link>
+        </Button>
       )}
     </div>
   );
 };
 
 export default LoginComponent;
+

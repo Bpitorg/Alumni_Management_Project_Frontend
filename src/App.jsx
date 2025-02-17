@@ -11,6 +11,8 @@ import AchievementsListings from './pages/achievements/AchievementsListings'
 import AddAchievement from './pages/achievements/AddAchievement'
 import IndividualAchievement from './pages/achievements/IndividualAchievement'
 import Interview_Listing from './pages/interviews/Interview_Listing'
+import AddInterview from './pages/interviews/AddInterview'
+
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
       <Route path="/add-achievement" element={<AddAchievement/>}/>
       <Route path="/achievement/id" element={<IndividualAchievement/>}/>
       <Route path="/all-interviews" element={<Interview_Listing/>}/>
+      <Route path="/list-interview" element={<AddInterview/>}/>
+      
     </Routes>
 
   )

@@ -7,7 +7,7 @@ const AchievementCard = (achievement) => {
   const navigate = useNavigate()
 
   const handleNavigate = () =>{
-       navigate("/achievement/id")
+       navigate(`/achievement/${achievement.id}`,{state : achievement})
   }
 
   achievement=achievement.achievement
@@ -27,7 +27,7 @@ const AchievementCard = (achievement) => {
                         {achievement.name} - {achievement.batch}
                     </Typography>
                     <Typography variant="body2" className="mt-2">
-                        {achievement.description}
+                        {achievement.description.length > 50 ? achievement.description.slice(0,100):achievement.description}
                     </Typography>
                     <Button sx={{ mt: 2 , borderColor:'orange' , color:'orange' }} variant="outlined" onClick={handleNavigate}>
                         Know More

@@ -9,7 +9,7 @@ import StudentPortfolio from './pages/StudentPortfolio'
 import MentorshipPage from './pages/mentorship/MentorshipPage'
 import AchievementsListings from './pages/achievements/AchievementsListings'
 import AddAchievement from './pages/achievements/AddAchievement'
-import IndividualAchievement from './pages/achievements/IndividualAchievement'
+import IndividualAchievements from './pages/achievements/IndividualAchievements'
 import Interview_Listing from './pages/interviews/Interview_Listing'
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
       <Route path="/mentor-page" element={<MentorshipPage/>}/>
       <Route path="/all-achievements" element={<AchievementsListings/>}/>
       <Route path="/add-achievement" element={<AddAchievement/>}/>
-      <Route path="/achievement/id" element={<IndividualAchievement/>}/>
+      <Route path="/achievement/:id" element={<IndividualAchievements/>}/>
       <Route path="/all-interviews" element={<Interview_Listing/>}/>
     </Routes>
 

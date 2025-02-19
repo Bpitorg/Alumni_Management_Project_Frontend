@@ -12,6 +12,8 @@ import AddAchievement from './pages/achievements/AddAchievement'
 import IndividualAchievements from './pages/achievements/IndividualAchievements'
 import Interview_Listing from './pages/interviews/Interview_Listing'
 import AddInterview from './pages/interviews/AddInterview'
+import AboutUs from './pages/AboutUs'
+import ContactUs from './pages/ContactUs'
 
 
 const App = () => {
@@ -29,6 +31,8 @@ const App = () => {
       <Route path="/achievement/:id" element={<IndividualAchievements/>}/>
       <Route path="/all-interviews" element={<Interview_Listing/>}/>
       <Route path="/list-interview" element={<AddInterview/>}/>
+      <Route path="/about-us" element={<AboutUs/>}/>
+      <Route path="/contact-us" element={<ContactUs/>}/>
       
     </Routes>
 

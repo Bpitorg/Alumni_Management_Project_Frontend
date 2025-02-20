@@ -10,10 +10,13 @@ import FindJobs from './pages/Jobs/FindJobs'
 import MentorshipPage from './pages/mentorship/MentorshipPage'
 import AchievementsListings from './pages/achievements/AchievementsListings'
 import AddAchievement from './pages/achievements/AddAchievement'
-import IndividualAchievement from './pages/achievements/IndividualAchievement'
+import IndividualAchievements from './pages/achievements/IndividualAchievements'
 import Interview_Listing from './pages/interviews/Interview_Listing'
 import Navbar from './common-components/Navbar'
 import logo from "./assets/logo.svg"
+import AddInterview from './pages/interviews/AddInterview'
+import AboutUs from './pages/AboutUs'
+import ContactUs from './pages/ContactUs'
 
 const App = () => {
   const navLinks = [
@@ -38,8 +41,12 @@ const App = () => {
       <Route path="/mentor-page" element={<MentorshipPage/>}/>
       <Route path="/all-achievements" element={<AchievementsListings/>}/>
       <Route path="/add-achievement" element={<AddAchievement/>}/>
-      <Route path="/achievement/id" element={<IndividualAchievement/>}/>
+      <Route path="/achievement/:id" element={<IndividualAchievements/>}/>
       <Route path="/all-interviews" element={<Interview_Listing/>}/>
+      <Route path="/list-interview" element={<AddInterview/>}/>
+      <Route path="/about-us" element={<AboutUs/>}/>
+      <Route path="/contact-us" element={<ContactUs/>}/>
+      
     </Routes>
     </>
   )

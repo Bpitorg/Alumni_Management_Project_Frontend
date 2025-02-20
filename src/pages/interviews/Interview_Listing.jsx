@@ -23,7 +23,7 @@ function Interview_Listing() {
     { label: "Home", onClick: () => navigate("/") },
     { label: "Mentor", onClick: () => navigate("/mentor-page") },
     { label: "Interviews", onClick: () => navigate("/all-interviews") },
-    { label: "Add Interview", onClick: () => navigate("/interview-form") }
+    { label: "Add Interview", onClick: () => navigate("/list-interview") }
   ]
 
 

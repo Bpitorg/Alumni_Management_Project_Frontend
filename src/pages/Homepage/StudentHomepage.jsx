@@ -4,11 +4,9 @@ import Navbar from "../../common-components/Navbar";
 
 const StudentHomepage = () => {
   return (
-    <div className="h-screen bg-gray-100">
-      <div className="flex justify-between items-center">
-        <Navbar/>
-      </div>
-    </div>
+    <>
+      <div className="h-screen mt-4 bg-gray-100"></div>
+    </>
   );
 };
 

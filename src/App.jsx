@@ -17,6 +17,7 @@ import logo from "./assets/logo.svg"
 import AddInterview from './pages/interviews/AddInterview'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
+import Events_Listing from './pages/Events/Events_Listing'
 
 const App = () => {
   const navLinks = [
@@ -46,6 +47,7 @@ const App = () => {
       <Route path="/list-interview" element={<AddInterview/>}/>
       <Route path="/about-us" element={<AboutUs/>}/>
       <Route path="/contact-us" element={<ContactUs/>}/>
+      <Route path="/all-events" element={<Events_Listing/>}/>
       
     </Routes>
     </>

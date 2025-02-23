@@ -19,17 +19,12 @@ function Interview_Listing() {
   const handleChange = (event, value) => {
     setPage(value);
   };
-  const links=[
-    { label: "Home", onClick: () => navigate("/") },
-    { label: "Mentor", onClick: () => navigate("/mentor-page") },
-    { label: "Interviews", onClick: () => navigate("/all-interviews") },
-    { label: "Add Interview", onClick: () => navigate("/list-interview") }
-  ]
+ 
 
 
   return (
     <div>
-        <Navbar logo="https://media.collegedekho.com/media/img/institute/logo/1440576082.png" links={links} />
+        <Navbar/>
       {/* Display Interview Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {paginatedInterviews.map((interview) => (

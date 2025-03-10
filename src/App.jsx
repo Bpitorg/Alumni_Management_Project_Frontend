@@ -18,6 +18,8 @@ import AddInterview from './pages/interviews/AddInterview'
 import AboutUs from './pages/AboutUs'
 import ContactUs from './pages/ContactUs'
 import Events_Listing from './pages/Events/Events_Listing'
+import RegisterEvent from './pages/Events/RegisterEvent'
+import RegistrationSuccess from './pages/Events/RegistrationSuccess'
 
 const App = () => {
   const navLinks = [
@@ -48,6 +50,8 @@ const App = () => {
       <Route path="/about-us" element={<AboutUs/>}/>
       <Route path="/contact-us" element={<ContactUs/>}/>
       <Route path="/all-events" element={<Events_Listing/>}/>
+      <Route path="/event-register" element={<RegisterEvent/>}/>
+      <Route path="/success-register" element={<RegistrationSuccess/>}/>
       
     </Routes>
     </>

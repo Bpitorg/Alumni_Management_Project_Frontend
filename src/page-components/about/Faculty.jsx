@@ -1,11 +1,10 @@
 import React from "react";
 import { facultList } from "../../constants/dummyData";
-import FacultyCard from "./FacultyCard";
+import {FacultyCard} from "./Cards";
 
 const Faculty = () => {
   return (
-    <div className="container mx-auto py-6 px-5 space-y-10">
-   
+    <div className="container mx-auto py-6 px-5 space-y-10">  
       <div className="relative w-full max-w-7xl mx-auto">
         <img
           className="w-full h-80 object-cover blur-[2px]"
@@ -21,7 +20,6 @@ const Faculty = () => {
           </p>
         </div>
       </div>
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
         {facultList.map((faculty) => (
           <FacultyCard Faculty={faculty} key={faculty.id} />

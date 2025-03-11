@@ -1,4 +1,5 @@
 import { Email } from "@mui/icons-material";
+import { Bell, Calendar } from "lucide-react";
 import React from "react";
 
 const FacultyCard = ({ Faculty }) => {
@@ -22,4 +23,21 @@ const FacultyCard = ({ Faculty }) => {
   );
 };
 
-export default FacultyCard;
+const NoticeCard = ({ Notice }) => {
+  return (
+    <div key={Notice.id} className="p-6 bg-white rounded-lg shadow-md flex items-start gap-4">
+      <div className="p-3 bg-blue-500 text-white rounded-full">
+        <Bell className="w-6 h-6" />
+      </div>
+      <div>
+        <h3 className="text-xl font-semibold">{Notice.title}</h3>
+        <p className="text-gray-600 text-sm flex items-center gap-2 mt-1">
+          <Calendar className="w-4 h-4" /> {Notice.date}
+        </p>
+        <p className="text-gray-700 mt-2">{Notice.description}</p>
+      </div>
+    </div>
+  )
+}
+
+export { FacultyCard, NoticeCard };

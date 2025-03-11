@@ -147,3 +147,24 @@ export const facultList = [
     "email":"raju.sharma@example.com"
    },
 ]
+
+export const notices = [
+  {
+    id: 1,
+    title: "Alumni Meet 2025",
+    date: "March 20, 2025",
+    description: "Join us for the grand alumni reunion at the college auditorium.",
+  },
+  {
+    id: 2,
+    title: "Scholarship Applications Open",
+    date: "April 10, 2025",
+    description: "Applications for alumni-funded scholarships are now open.",
+  },
+  {
+    id: 3,
+    title: "Webinar on Career Growth",
+    date: "March 28, 2025",
+    description: "An interactive session with successful alumni in the tech industry.",
+  },
+];

@@ -1,9 +1,10 @@
-import React from 'react'
+import React from "react";
+import Notices from "../../page-components/about/Notices";
 
 const NoticeBoard = () => {
   return (
-    <div>NoticeBoard</div>
-  )
-}
+    <Notices/>
+  );
+};
 
-export default NoticeBoard
+export default NoticeBoard;

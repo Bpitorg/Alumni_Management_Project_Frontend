@@ -15,11 +15,13 @@ import Interview_Listing from './pages/interviews/Interview_Listing'
 import Navbar from './common-components/Navbar'
 import logo from "./assets/logo.svg"
 import AddInterview from './pages/interviews/AddInterview'
-import AboutUs from './pages/AboutUs'
+import AboutUs from './pages/about/AboutUs'
 import ContactUs from './pages/ContactUs'
 import Events_Listing from './pages/Events/Events_Listing'
 import RegisterEvent from './pages/Events/RegisterEvent'
 import RegistrationSuccess from './pages/Events/RegistrationSuccess'
+import FacultyDetails from './pages/about/FacultyDetails'
+import NoticeBoard from './pages/about/NoticeBoard'
 
 const App = () => {
   const navLinks = [
@@ -52,6 +54,8 @@ const App = () => {
       <Route path="/all-events" element={<Events_Listing/>}/>
       <Route path="/event-register" element={<RegisterEvent/>}/>
       <Route path="/success-register" element={<RegistrationSuccess/>}/>
+      <Route path="/faculty-details" element={<FacultyDetails/>}/>
+      <Route path="/notice" element={<NoticeBoard/>}/>
       
     </Routes>
     </>

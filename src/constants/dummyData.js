@@ -97,3 +97,53 @@ export const achievements =[
     },
 ]
   
+export const facultList = [
+  {
+    "id":1,
+    "name":"Mrs. Shweta Taneja",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+  {
+    "id":2,
+    "name":"Mrs. Bhawna Suri",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+  {
+    "id":3,
+    "name":"Mrs. Tanisha Madan",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+  {
+    "id":4,
+    "name":"Mrs. Shweta Taneja",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+  {
+    "id":5,
+    "name":"Mrs. Shweta Taneja",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+  {
+    "id":6,
+    "name":"Mrs. Shweta Taneja",
+    "description":"Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, optio! Architecto suscipit quia labore, accusantium qui minima libero nisi dolor numquam alias consequuntur maiores eius possimus laboriosam perferendis magnam quaerat, dolorem est veniam explicabo sit placeat veritatis cupiditate optio. Minima eligendi expedita dolor velit autem odit obcaecati. Eligendi, nihil tempore?",
+    "image":"https://th.bing.com/th/id/OIP.bBAV_h3DcS_CFtEXMbv5uQHaLH?rs=1&pid=ImgDetMain",
+    "designation":"Associate Professor, Computer Science Department",
+    "email":"raju.sharma@example.com"
+   },
+]

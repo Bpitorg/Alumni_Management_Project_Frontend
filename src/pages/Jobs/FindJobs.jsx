@@ -87,7 +87,7 @@ const FindJobs = () => {
             width: 300,
             p: 2,
             height: "100vh",
-            position: "sticky",
+         //   position: "sticky",
             top: 0,
             overflowY: "auto",
             display: "flex",

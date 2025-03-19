@@ -27,7 +27,7 @@ const App = () => {
   const navLinks = [
     { label: "Home", path: "/" },
     { label: "Jobs", path: "/jobs" },
-    { label: "Mentorship", path: "/about" },
+    { label: "Mentorship", path: "/mentor-page" },
     { label: "Achievements", path: "/all-achievements" },
     { label: "Interviews", path: "/all-interviews" },
   ];

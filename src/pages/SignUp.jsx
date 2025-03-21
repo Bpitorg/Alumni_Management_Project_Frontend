@@ -1,9 +1,14 @@
-import React from "react";
-import SignUpPic from "../assets/SignUpPic.svg";
+import React, { useState } from "react";
+import SignUpPic from "../assets/SignUpPic 1.svg";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useTheme } from "@mui/material/styles"; // Import theme
 
 const SignUp = () => {
+  const theme = useTheme(); // Access theme
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -16,49 +21,109 @@ const SignUp = () => {
       passingYear: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      setLoading(true);
+      // Replace API call with console log or placeholder action
+      console.log("Form submitted:", values);
+      setTimeout(() => {
+        alert("Account creation simulated!");
+        navigate("/home"); // Navigate to /home
+        setLoading(false);
+      }, 1000); // Simulate a delay for user feedback
     },
   });
 
   const inputFields = [
-    { id: "firstName", name: "firstName", placeholder: "First Name", type: "text" },
-    { id: "lastName", name: "lastName", placeholder: "Last Name", type: "text" },
-    { id: "email", name: "email", placeholder: "Enter your email address", type: "text" },
-    { id: "phone", name: "phone", placeholder: "Enter your phone number", type: "text" },
-    { id: "branch", name: "branch", placeholder: "Enter your branch", type: "text" },
-    { id: "password", name: "password", placeholder: "Enter your password", type: "password" },
-    { id: "confirmPassword", name: "confirmPassword", placeholder: "Confirm your password", type: "password" },
+    {
+      id: "firstName",
+      name: "firstName",
+      placeholder: "First Name",
+      type: "text",
+    },
+    {
+      id: "lastName",
+      name: "lastName",
+      placeholder: "Last Name",
+      type: "text",
+    },
+    {
+      id: "email",
+      name: "email",
+      placeholder: "Enter your email address",
+      type: "text",
+    },
+    {
+      id: "phone",
+      name: "phone",
+      placeholder: "Enter your phone number",
+      type: "text",
+    },
+    {
+      id: "branch",
+      name: "branch",
+      placeholder: "Enter your branch",
+      type: "text",
+    },
+    {
+      id: "password",
+      name: "password",
+      placeholder: "Enter your password",
+      type: "password",
+    },
+    {
+      id: "confirmPassword",
+      name: "confirmPassword",
+      placeholder: "Confirm your password",
+      type: "password",
+    },
   ];
 
   const currentYear = new Date().getFullYear();
-  const passingYears = [];
-  for (let year = 2011; year <= currentYear; year++) {
-    passingYears.push(year);
-  }
+  const passingYears = Array.from(
+    { length: currentYear - 2010 },
+    (_, i) => 2011 + i
+  );
 
   return (
-    <div className="bg-gray-200 w-full flex flex-col justify-center items-center font-poppins">
-      <div className="mt-10 flex flex-col justify-center items-center">
-        <h1 className="text-5xl p-1 font-medium">
-          Welcome to BPIT Alumni
-        </h1>
+    <div
+      className="w-full flex flex-col justify-center items-center font-poppins"
+      style={{ backgroundColor: theme.palette.background.default }}
+    >
+      <div
+        className="mt-10 flex flex-col justify-center items-center"
+        style={{ color: theme.palette.primary.main }}
+      >
+        <h1 className="text-5xl p-1 font-medium">Welcome to BPIT Alumni</h1>
         <h2 className="text-3xl p-1">
           Become a part of the BPIT community today!
         </h2>
       </div>
       <div className="h-full flex justify-center items-center">
-        <div className="h-1/2 flex m-5">
-          <div className="w-1/2 flex flex-col justify-center items-center">
-            <form className="flex flex-col justify-center" onSubmit={formik.handleSubmit}>
+        <div
+          className="h-1/2 flex m-5 shadow-lg rounded-xl"
+          style={{ backgroundColor: theme.palette.background }}
+        >
+          <div className="w-1/2 flex flex-col justify-center items-center p-5">
+            <form
+              className="flex flex-col justify-center"
+              onSubmit={formik.handleSubmit}
+            >
               <div className="flex flex-col">
-                <label className="m-2 text-lg" htmlFor="Name">
+                <label
+                  className="m-2 text-lg"
+                  htmlFor="Name"
+                  style={{ color: theme.palette.primary.main }}
+                >
                   Name
                 </label>
                 <div className="flex gap-2">
                   {inputFields.slice(0, 2).map((field) => (
                     <input
                       key={field.id}
-                      className="p-2 border-gray-400 border-solid border-1 rounded-md placeholder:text-sm"
+                      className="p-2 border-solid border-[1.5px] rounded-md placeholder:text-sm focus:outline-none"
+                      style={{
+                        borderColor: theme.palette.primary.main,
+                        color: theme.palette.text.primary,
+                      }}
                       type={field.type}
                       id={field.id}
                       name={field.name}
@@ -71,12 +136,20 @@ const SignUp = () => {
               </div>
               {inputFields.slice(2).map((field) => (
                 <div key={field.id} className="flex flex-col">
-                  <label className="m-2 text-lg" htmlFor={field.id}>
+                  <label
+                    className="m-2 text-lg"
+                    htmlFor={field.id}
+                    style={{ color: theme.palette.primary.main }}
+                  >
                     {field.placeholder}
                   </label>
                   <div className="flex gap-2">
                     <input
-                      className="p-2 w-full border-gray-400 border-solid border-1 rounded-md placeholder:text-sm"
+                      className="p-2 w-full border-solid border-[1.5px] rounded-md placeholder:text-sm focus:outline-none"
+                      style={{
+                        borderColor: theme.palette.primary.main,
+                        color: theme.palette.text.primary,
+                      }}
                       type={field.type}
                       id={field.id}
                       name={field.name}
@@ -88,28 +161,54 @@ const SignUp = () => {
                 </div>
               ))}
               <div className="flex flex-col">
-                <label className="m-2 text-lg" htmlFor="passingYear">
+                <label
+                  className="m-2 text-lg"
+                  htmlFor="passingYear"
+                  style={{ color: theme.palette.primary.main }}
+                >
                   Passing Year
                 </label>
-                <div className="flex gap-2">
-                  <select
-                    className="p-2 w-full border-gray-400 border-solid border-1 rounded-md placeholder:text-sm"
-                    id="passingYear"
-                    name="passingYear"
-                    onChange={formik.handleChange}
-                    value={formik.values.passingYear}
+                <select
+                  className="p-2 w-full border-solid border-[1.5px] rounded-md focus:outline-none"
+                  style={{
+                    borderColor: theme.palette.primary.main,
+                    color: formik.values.passingYear
+                      ? theme.palette.text.primary
+                      : "#9CA3AF",
+                  }}
+                  id="passingYear"
+                  name="passingYear"
+                  onChange={formik.handleChange}
+                  value={formik.values.passingYear}
+                >
+                  <option
+                    value=""
+                    disabled
+                    hidden
+                    style={{ color: "#9CA3AF" }}
                   >
-                    <option value="" label="Select your passing year" />
-                    {passingYears.map((year) => (
-                      <option key={year} value={year} label={year.toString()} />
-                    ))}
-                  </select>
-                </div>
+                    Select your passing year
+                  </option>
+                  {passingYears.map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mt-4 flex w-full">
-                <Link to="/student-portfolio" className="font-medium flex justify-center w-full p-2 bg-[#6C63FF] text-white rounded-md">
-                  Create Account
-                </Link>
+                <button
+                  type="submit"
+                  className="font-medium flex justify-center w-full p-2 rounded-md transition-colors"
+                  style={{
+                    backgroundColor: theme.palette.primary.main,
+                    color: theme.palette.primary.contrastText,
+                    cursor: loading ? "not-allowed" : "pointer",
+                  }}
+                  disabled={loading}
+                >
+                  {loading ? "Creating Account..." : "Create Account"}
+                </button>
               </div>
             </form>
           </div>

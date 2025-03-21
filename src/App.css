@@ -1,0 +1,7 @@
+body {
+    background-color: #efe9e0;  /* Soft Ivory background */
+    font-family: 'Sansation', sans-serif;  /* Sansation as default font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

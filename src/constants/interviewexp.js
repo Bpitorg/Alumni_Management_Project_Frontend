@@ -1,0 +1,138 @@
+export const interviewExperiences = [
+  {
+    id: 1,
+    name: "Jane Doe",
+    role: "Software Engineering Intern",
+    company: "Microsoft",
+    type: "Technical + Behavioral",
+    date: "March 2023",
+    difficulty: "Medium",
+    experience:
+      "The interview process included two coding rounds and a behavioral round. I was asked about data structures and algorithms, and the interviewers were very supportive. My advice is to practice LeetCode and be confident in explaining your thought process.",
+    preparationTips: [
+      "Practice LeetCode medium and hard problems.",
+      "Review core CS concepts like OS, DBMS, and OOP.",
+      "Prepare for behavioral questions using the STAR method.",
+    ],
+    outcome: "Received an offer and joined the team in June 2023.",
+  },
+  {
+    id: 2,
+    name: "John Smith",
+    role: "Product Manager",
+    company: "Amazon",
+    type: "Case Study + Behavioral",
+    date: "February 2023",
+    difficulty: "Hard",
+    experience:
+      "The case study round was challenging but fun. I was asked to design a new feature for Amazon Prime. I focused on user needs and business impact, which impressed the interviewers.",
+    preparationTips: [
+      "Practice solving product design case studies.",
+      "Understand Amazon's leadership principles.",
+      "Be ready to justify your decisions with data.",
+    ],
+    outcome: "Received an offer and started in May 2023.",
+  },
+  {
+    id: 3,
+    name: "Sarah Lee",
+    role: "Senior Engineer",
+    company: "Google",
+    type: "Technical",
+    date: "January 2023",
+    difficulty: "Hard",
+    experience:
+      "As an interviewer, I look for problem-solving skills and clear communication. Don’t worry if you don’t know the answer—just walk me through your thought process.",
+    preparationTips: [
+      "Focus on system design and scalability.",
+      "Practice coding on a whiteboard or Google Docs.",
+      "Be prepared to explain your solutions clearly.",
+    ],
+    outcome: "Joined as a Senior Engineer in April 2023.",
+  },
+  {
+    id: 4,
+    name: "Alex Johnson",
+    role: "Data Scientist",
+    company: "Meta",
+    type: "Technical + Case Study",
+    date: "December 2022",
+    difficulty: "Medium",
+    experience:
+      "The interview involved solving machine learning problems and a case study on improving ad targeting. I was asked to explain my approach in detail, which helped me stand out.",
+    preparationTips: [
+      "Brush up on machine learning algorithms.",
+      "Practice SQL and Python for data manipulation.",
+      "Be ready to explain your models and assumptions.",
+    ],
+    outcome: "Received an offer and started in March 2023.",
+  },
+  {
+    id: 5,
+    name: "Emily Brown",
+    role: "UX Designer",
+    company: "Apple",
+    type: "Portfolio Review + Behavioral",
+    date: "November 2022",
+    difficulty: "Medium",
+    experience:
+      "The interview focused on my portfolio and design process. I was asked to critique a current Apple product and suggest improvements. The interviewers appreciated my attention to detail.",
+    preparationTips: [
+      "Polish your portfolio with recent projects.",
+      "Be ready to explain your design decisions.",
+      "Research Apple's design principles and products.",
+    ],
+    outcome: "Received an offer and joined in February 2023.",
+  },
+  {
+    id: 6,
+    name: "Michael Chen",
+    role: "DevOps Engineer",
+    company: "Netflix",
+    type: "Technical + System Design",
+    date: "October 2022",
+    difficulty: "Hard",
+    experience:
+      "The interview involved designing a scalable CI/CD pipeline and troubleshooting a live system. I was asked to optimize for performance and cost, which was challenging but rewarding.",
+    preparationTips: [
+      "Understand cloud platforms like AWS and GCP.",
+      "Practice designing scalable systems.",
+      "Be ready to debug live systems under pressure.",
+    ],
+    outcome: "Received an offer and started in January 2023.",
+  },
+  {
+    id: 7,
+    name: "Rachel Green",
+    role: "Marketing Manager",
+    company: "Tesla",
+    type: "Behavioral + Case Study",
+    date: "September 2022",
+    difficulty: "Medium",
+    experience:
+      "The interview focused on my marketing campaigns and how I measure their success. I was asked to create a campaign for a new Tesla product, which was a great learning experience.",
+    preparationTips: [
+      "Prepare examples of successful campaigns.",
+      "Understand Tesla's brand and mission.",
+      "Be ready to analyze campaign metrics.",
+    ],
+    outcome: "Received an offer and joined in December 2022.",
+  },
+  {
+    id: 8,
+    name: "David Wilson",
+    role: "Frontend Developer",
+    company: "Spotify",
+    type: "Technical + Take-Home Assignment",
+    date: "August 2022",
+    difficulty: "Medium",
+    experience:
+      "The interview included a take-home assignment to build a responsive UI and a technical round to optimize the code. I was asked to explain my design choices and coding practices.",
+    preparationTips: [
+      "Practice building responsive UIs with React.",
+      "Optimize your code for performance.",
+      "Be ready to explain your design decisions.",
+    ],
+    outcome: "Received an offer and started in November 2022.",
+  },
+];

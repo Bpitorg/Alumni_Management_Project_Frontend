@@ -1,545 +1,348 @@
+// pages/Home.jsx
+import { useState } from 'react';
 import { useTheme } from "@mui/material";
-import React from "react";
+import DashboardLayout from "../common-components/DashboardLayout";
+import HighlightCard from "../common-components/HighlightCard";
+import { TrendingUp, Calendar, Briefcase, Users, Star, Activity } from 'lucide-react';
 
 const Home = () => {
-  // Dummy data for demonstration
-  const userName = "John Doe"; // Replace with dynamic user name
-  const yourCourses = [
-    { id: 1, title: "React Masterclass", progress: 75 },
-    { id: 2, title: "Advanced JavaScript", progress: 50 },
+  const theme = useTheme();
+  const [selectedTab, setSelectedTab] = useState('highlights');
+  
+  // Stats for the overview section
+  const stats = [
+    { title: "Active Members", value: "2,846", change: "+12%", icon: <Users className="h-6 w-6 text-blue-500" /> },
+    { title: "Placement Rate", value: "94%", change: "+5%", icon: <Star className="h-6 w-6 text-yellow-500" /> },
+    { title: "Upcoming Events", value: "8", change: "This Month", icon: <Calendar className="h-6 w-6 text-purple-500" /> },
+    { title: "Community Engagement", value: "86%", change: "+3%", icon: <Activity className="h-6 w-6 text-green-500" /> },
   ];
 
-  const yourMentors = [
-    {
-      id: 1,
-      name: "John Doe",
-      expertise: "Frontend Development",
-      image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 2,
-      name: "Jane Smith",
-      expertise: "Data Science",
-      image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 3,
-      name: "Alice Johnson",
-      expertise: "UI/UX Design",
-      image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      id: 4,
-      name: "Bob Brown",
-      expertise: "Backend Development",
-      image: "https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-  ];
-
-  const newsletter = {
-    title: "Monthly Newsletter",
-    content: "Subscribe to stay updated with the latest trends and news.",
-    image: "https://via.placeholder.com/300",
-  };
-
-  const streak = {
-    days: 5,
-    description: "Daily login streak",
-    achievements: ["5-day streak", "Consistent learner"],
-    goal: 7, // Add a goal for the progress bar
-    nextMilestone: "7-day streak", // Add the next milestone
-  };
-
-  const recommendedMentors = [
-    {
-      id: 1,
-      name: "Alice Johnson",
-      expertise: "UI/UX Design",
-      image: "https://via.placeholder.com/100",
-    },
-    {
-      id: 2,
-      name: "Bob Brown",
-      expertise: "Backend Development",
-      image: "https://via.placeholder.com/100",
-    },
-    {
-      id: 3,
-      name: "Charlie Davis",
-      expertise: "DevOps",
-      image: "https://via.placeholder.com/100",
-    },
-  ];
-
-  const recommendedCourses = [
-    {
-      id: 1,
-      title: "Node.js Bootcamp",
-      category: "Backend",
-      image: "https://img.freepik.com/premium-vector/courses-logo-icon-brand-identity-sign-symbol-template_880781-2160.jpg",
-    },
-    {
-      id: 2,
-      title: "Python for Data Science",
-      category: "Data Science",
-      image: "https://img.freepik.com/premium-vector/courses-logo-icon-brand-identity-sign-symbol-template_880781-2160.jpg",
-    },
-    {
-      id: 3,
-      title: "React Native Fundamentals",
-      category: "Mobile Development",
-      image: "https://img.freepik.com/premium-vector/courses-logo-icon-brand-identity-sign-symbol-template_880781-2160.jpg",
-    },
-  ];
-
-  const quickActions = [
-    {
-      id: 1,
-      title: "Start New Course",
-      icon: "📚",
-      action: () => alert("Start New Course"),
-    },
-    {
-      id: 2,
-      title: "Message Mentor",
-      icon: "💬",
-      action: () => alert("Message Mentor"),
-    },
-    {
-      id: 3,
-      title: "View Notifications",
-      icon: "🔔",
-      action: () => alert("View Notifications"),
-    },
-  ];
-
-  const recentActivities = [
-    {
-      id: 1,
-      title: "Completed React Masterclass Lesson 5",
-      time: "2 hours ago",
-    },
-    { id: 2, title: "Received a message from Jane Smith", time: "5 hours ago" },
-    { id: 3, title: "Achieved 5-day streak", time: "1 day ago" },
-  ];
-
-  const statistics = [
-    { id: 1, title: "Total Courses Completed", value: 12 },
-    { id: 2, title: "Hours Spent Learning", value: 120 },
-    { id: 3, title: "Certifications Earned", value: 5 },
-  ];
-
-  const notifications = [
-    {
-      id: 1,
-      title: "New Course Available",
-      content: "Node.js Bootcamp is now available.",
-      time: "1 hour ago",
-    },
-    {
-      id: 2,
-      title: "Webinar Reminder",
-      content: "Join the live webinar on Data Science tomorrow.",
-      time: "3 hours ago",
-    },
-  ];
-
+  // Sample data for upcoming events
   const upcomingEvents = [
     {
-      id: 1,
-      title: "Live Webinar: Advanced JavaScript",
-      date: "2023-10-15",
-      time: "10:00 AM",
+      title: "Resume Workshop",
+      date: "Apr 15, 2025",
+      time: "3:00 PM",
+      attendees: 45,
+      location: "Virtual"
     },
     {
-      id: 2,
-      title: "Deadline: React Masterclass Assignment",
-      date: "2023-10-20",
-      time: "11:59 PM",
+      title: "Tech Interview Prep",
+      date: "Apr 18, 2025",
+      time: "5:30 PM",
+      attendees: 89,
+      location: "Main Campus, Room 302"
     },
+    {
+      title: "Networking Mixer",
+      date: "Apr 22, 2025",
+      time: "6:00 PM",
+      attendees: 120,
+      location: "Innovation Hub"
+    }
   ];
 
-  const progressOverview = {
-    totalCourses: 15,
-    completedCourses: 8,
-    inProgressCourses: 4,
-  };
+  // Job opportunities data
+  const jobListings = [
+    {
+      position: "Senior Frontend Developer",
+      company: "Google",
+      location: "Bangalore, India",
+      salary: "₹28-35 LPA",
+      posted: "2 days ago",
+      logo: "google-logo",
+      skills: ["React", "TypeScript", "Redux"],
+      referral: true
+    },
+    {
+      position: "DevOps Engineer",
+      company: "Amazon",
+      location: "Hyderabad, India (Remote)",
+      salary: "₹20-25 LPA",
+      posted: "1 week ago",
+      logo: "amazon-logo",
+      skills: ["AWS", "Kubernetes", "CI/CD"],
+      referral: true
+    },
+    {
+      position: "Data Scientist",
+      company: "Microsoft",
+      location: "Pune, India",
+      salary: "₹18-24 LPA",
+      posted: "3 days ago",
+      logo: "microsoft-logo",
+      skills: ["Python", "Machine Learning", "SQL"],
+      referral: false
+    },
+    {
+      position: "Product Manager",
+      company: "Flipkart",
+      location: "Bangalore, India",
+      salary: "₹25-32 LPA",
+      posted: "4 days ago",
+      logo: "flipkart-logo",
+      skills: ["Product Strategy", "Agile", "Analytics"],
+      referral: true
+    }
+  ];
 
-  const communityEngagement = {
-    forumPosts: 12,
-    comments: 45,
-    likes: 120,
-  };
-
-  // Theme colors
-  const theme = useTheme();
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      {/* Greeting Section */}
-      <div className="mb-8">
-        <h1
-          className="text-5xl font-bold"
-          style={{ color: theme.palette.primary.main }}
-        >
-          Hello, {userName}
-        </h1>
-        <p className="text-xl font-semibold text-gray-500">Welcome back to your dashboard</p>
-      </div>
-
-      {/* Grid Layout for Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column */}
-        <div className="lg:col-span-2 space-y-6">
-          {/* Quick Actions Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Quick Actions
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {quickActions.map((action) => (
-                <button
-                  key={action.id}
-                  onClick={action.action}
-                  className="flex flex-col items-center justify-center p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  <span className="text-2xl mb-2">{action.icon}</span>
-                  <p className="text-gray-700 font-medium">{action.title}</p>
-                </button>
-              ))}
-            </div>
+    <DashboardLayout>
+      <div className="w-full px-4 py-6 bg-gray-50">
+        {/* Welcome section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+          <div>
+            <h1 className="text-3xl font-bold" style={{
+              color: theme.palette.primary.main,
+            }}>Welcome back, Aditya!</h1>
+            <p className="text-gray-600 mt-1">Here's what's happening in your community today</p>
           </div>
-
-          {/* Your Courses Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Your Courses
-            </h2>
-            {yourCourses.map((course) => (
-              <div key={course.id} className="mb-4">
-                <p className="text-gray-700">{course.title}</p>
-                <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
-                  <div
-                    className="bg-blue-500 h-2 rounded-full"
-                    style={{ width: `${course.progress}%` }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Recent Activity Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Recent Activity
-            </h2>
-            <div className="space-y-4">
-              {recentActivities.map((activity) => (
-                <div key={activity.id} className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <div>
-                    <p className="text-gray-700">{activity.title}</p>
-                    <p className="text-gray-500 text-sm">{activity.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Statistics Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Statistics
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {statistics.map((stat) => (
-                <div
-                  key={stat.id}
-                  className="p-4 bg-gray-100 rounded-lg text-center"
-                >
-                  <p className="text-gray-700 font-medium">{stat.title}</p>
-                  <p
-                    className="text-2xl font-bold"
-                    style={{ color: theme.palette.primary.main }}
-                  >
-                    {stat.value}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Your Mentors Card (Full Width, Horizontal Scroll) */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Your Mentors
-            </h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-              {yourMentors.map((mentor) => (
-                <div
-                  key={mentor.id}
-                  className="flex-shrink-0 w-48 p-4 bg-gray-100 rounded-lg text-center"
-                >
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    className="w-16 h-16 object-cover rounded-full mx-auto mb-2"
-                  />
-                  <p className="text-gray-700 font-medium">{mentor.name}</p>
-                  <p className="text-gray-500 text-sm">{mentor.expertise}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Streak Card (Enhanced) */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Streak
-            </h2>
-            <div className="flex items-center space-x-4">
-              {/* Streak Counter with Animation */}
-              <div className="relative">
-                <p className="text-gray-700 text-4xl font-bold animate-pulse">
-                  {streak.days} 🔥
-                </p>
-                {/* Tooltip */}
-                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity">
-                  Keep it up! Login daily to maintain your streak.
-                </div>
-              </div>
-              <div>
-                <p className="text-gray-500 text-sm">{streak.description}</p>
-                <ul className="list-disc list-inside text-gray-500 text-sm">
-                  {streak.achievements.map((achievement, index) => (
-                    <li key={index} className="flex items-center space-x-2">
-                      <span>✅</span> {/* Icon for achievements */}
-                      <span>{achievement}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            {/* Progress Bar */}
-            <div className="mt-4">
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div
-                  className="bg-blue-500 h-2 rounded-full"
-                  style={{ width: `${(streak.days / 7) * 100}%` }} // Assuming a 7-day goal
-                ></div>
-              </div>
-              <p className="text-gray-500 text-sm mt-2">
-                {streak.days}/7 days to next milestone
-              </p>
-            </div>
-          </div>
-
-          {/* Recommended Mentors Card (Full Width, Horizontal Scroll) */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Recommended Mentors
-            </h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-              {recommendedMentors.map((mentor) => (
-                <div
-                  key={mentor.id}
-                  className="flex-shrink-0 w-48 p-4 bg-gray-100 rounded-lg text-center"
-                >
-                  <img
-                    src={mentor.image}
-                    alt={mentor.name}
-                    className="w-16 h-16 rounded-full mx-auto mb-2"
-                  />
-                  <p className="text-gray-700 font-medium">{mentor.name}</p>
-                  <p className="text-gray-500 text-sm">{mentor.expertise}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Recommended Courses Card (Full Width, Horizontal Scroll) */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Recommended Courses
-            </h2>
-            <div className="flex overflow-x-auto space-x-4 pb-4">
-              {recommendedCourses.map((course) => (
-                <div
-                  key={course.id}
-                  className="flex-shrink-0 w-64 p-4 bg-gray-100 rounded-lg"
-                >
-                  <img
-                    src={course.image}
-                    alt={course.title}
-                    className="w-full h-32 object-cover rounded-lg mb-2"
-                  />
-                  <p className="text-gray-700 font-medium">{course.title}</p>
-                  <p className="text-gray-500 text-sm">{course.category}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column */}
-        <div className="lg:col-span-1 space-y-6">
-          {/* Newsletter Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              {newsletter.title}
-            </h2>
-            <img
-              src={newsletter.image}
-              alt="Newsletter"
-              className="w-full h-48 object-cover rounded-lg mb-4"
-            />
-            <p className="text-gray-700 mb-4">{newsletter.content}</p>
-            <button
-              className="w-full bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-              style={{ backgroundColor: theme.palette.primary.main }}
-            >
-              Subscribe
+          <div className="mt-4 md:mt-0 flex space-x-3">
+            <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center">
+              <Calendar className="h-5 w-5 mr-2" />
+              New Event
+            </button>
+            <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-lg flex items-center">
+              <Briefcase className="h-5 w-5 mr-2" />
+              Post Job
             </button>
           </div>
+        </div>
 
-          {/* Notifications Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Notifications
-            </h2>
-            <div className="space-y-4">
-              {notifications.map((notification) => (
-                <div
-                  key={notification.id}
-                  className="flex items-center space-x-4"
-                >
-                  <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <div>
-                    <p className="text-gray-700">{notification.title}</p>
-                    <p className="text-gray-500 text-sm">
-                      {notification.content}
-                    </p>
-                    <p className="text-gray-500 text-sm">{notification.time}</p>
-                  </div>
+        {/* Stats overview */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {stats.map((stat, index) => (
+            <div key={index} className="bg-white rounded-xl shadow-sm p-10 border border-gray-100">
+              <div className="flex justify-between items-start">
+                <div>
+                  <p className="text-gray-500 text-sm">{stat.title}</p>
+                  <h3 className="text-2xl font-bold mt-1">{stat.value}</h3>
+                  <p className="text-green-500 text-sm mt-1 flex items-center">
+                    <TrendingUp className="h-4 w-4 mr-1" />
+                    {stat.change}
+                  </p>
                 </div>
-              ))}
+                <div className="p-3 rounded-lg bg-gray-50">
+                  {stat.icon}
+                </div>
+              </div>
             </div>
-          </div>
+          ))}
+        </div>
 
-          {/* Upcoming Events Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
+        {/* Tab navigation */}
+        <div className="border-b border-gray-200 mb-6">
+          <nav className="flex space-x-8">
+            <button 
+              onClick={() => setSelectedTab('highlights')}
+              className={`py-3 px-1 font-medium text-sm ${selectedTab === 'highlights' 
+                ? 'border-b-2 border-blue-500 text-blue-600' 
+                : 'text-gray-500 hover:text-gray-700'}`}
+            >
+              Community Highlights
+            </button>
+            <button 
+              onClick={() => setSelectedTab('jobs')}
+              className={`py-3 px-1 font-medium text-sm ${selectedTab === 'jobs' 
+                ? 'border-b-2 border-blue-500 text-blue-600' 
+                : 'text-gray-500 hover:text-gray-700'}`}
+            >
+              Job Opportunities
+            </button>
+            <button 
+              onClick={() => setSelectedTab('events')}
+              className={`py-3 px-1 font-medium text-sm ${selectedTab === 'events' 
+                ? 'border-b-2 border-blue-500 text-blue-600' 
+                : 'text-gray-500 hover:text-gray-700'}`}
             >
               Upcoming Events
-            </h2>
-            <div className="space-y-4">
-              {upcomingEvents.map((event) => (
-                <div key={event.id} className="flex items-center space-x-4">
-                  <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full"></div>
-                  <div>
-                    <p className="text-gray-700">{event.title}</p>
-                    <p className="text-gray-500 text-sm">
-                      {event.date} at {event.time}
-                    </p>
+            </button>
+          </nav>
+        </div>
+
+        {/* Tab content */}
+        {selectedTab === 'highlights' && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+            <HighlightCard
+              type="placed"
+              icon="🏆"
+              title="Recently Placed"
+              items={[
+                {
+                  icon: "👩‍🎓",
+                  bgColor: "bg-blue-100",
+                  iconColor: "text-blue-600",
+                  title: "Priya joined Google as SWE",
+                  subtitle: "2 days ago"
+                },
+                {
+                  icon: "👨‍🎓",
+                  bgColor: "bg-green-100",
+                  iconColor: "text-green-600",
+                  title: "Rahul placed at Amazon",
+                  subtitle: "1 week ago"
+                },
+                {
+                  icon: "👩‍💻",
+                  bgColor: "bg-purple-100",
+                  iconColor: "text-purple-600",
+                  title: "Sneha promoted to Team Lead at Adobe",
+                  subtitle: "2 weeks ago"
+                }
+              ]}
+              linkText="View all success stories"
+              linkTo="/placements"
+            />
+            
+            <HighlightCard
+              type="members"
+              icon="🆕"
+              title="New Members"
+              items={[
+                { icon: "👩‍💼", bgColor: "bg-purple-100", name: "Nisha (Mentor)" },
+                { icon: "👨‍💻", bgColor: "bg-amber-100", name: "Arjun (Alumni)" },
+                { icon: "👩‍🎓", bgColor: "bg-teal-100", name: "Meena (Student)" }
+              ]}
+              additionalContent="12+ new members joined this week"
+              linkText="Meet the community"
+              linkTo="/new-members"
+            />
+            
+            <HighlightCard
+              type="event"
+              icon="📣"
+              title="Annual Alumni Meet 2025"
+              items={[
+                { bgColor: "bg-red-100", initials: "JD", textColor: "text-red-800" },
+                { bgColor: "bg-blue-100", initials: "AM", textColor: "text-blue-800" },
+                { bgColor: "bg-green-100", initials: "SK", textColor: "text-green-800" },
+                { bgColor: "bg-yellow-100", initials: "+42", textColor: "text-yellow-800" }
+              ]}
+              additionalContent="Registration now open! Connect with 150+ alumni from top companies."
+              linkText="Register Now"
+              linkTo="/events/annual-meet-2025"
+            />
+          </div>
+        )}
+
+        {selectedTab === 'jobs' && (
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+            <div className="p-5 border-b border-gray-100 flex justify-between items-center">
+              <div>
+                <h3 className="font-medium text-gray-900">Hot Job Opportunities</h3>
+                <p className="text-sm text-gray-500 mt-1">Exclusive listings from our alumni network</p>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="relative">
+                  <select className="appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-2 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-blue-500 text-sm">
+                    <option>All Locations</option>
+                    <option>Remote</option>
+                    <option>Bangalore</option>
+                    <option>Hyderabad</option>
+                    <option>Pune</option>
+                  </select>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+                <a href="/jobs" className="text-blue-600 text-sm hover:underline">View All Jobs</a>
+              </div>
+            </div>
+            <div className="divide-y divide-gray-100">
+              {jobListings.map((job, index) => (
+                <div key={index} className="p-5 hover:bg-gray-50 transition-colors">
+                  <div className="flex justify-between">
+                    <div className="flex">
+                      <div className="flex-shrink-0 w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mr-4">
+                        <span className="font-bold text-sm">{job.logo.split('-')[0].charAt(0).toUpperCase()}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900">{job.position}</h4>
+                        <div className="flex items-center mt-1">
+                          <span className="text-sm text-gray-600">{job.company}</span>
+                          <span className="mx-2 text-gray-300">•</span>
+                          <span className="text-sm text-gray-600">{job.location}</span>
+                        </div>
+                        <div className="flex mt-2 space-x-2">
+                          {job.skills.map((skill, i) => (
+                            <span key={i} className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-md">
+                              {skill}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex flex-col items-end justify-between">
+                      <span className="font-medium text-gray-900">{job.salary}</span>
+                      <div className="flex items-center mt-2">
+                        <span className="text-xs text-gray-500 mr-3">Posted {job.posted}</span>
+                        {job.referral && (
+                          <span className="bg-green-50 text-green-700 px-2 py-1 text-xs rounded-md">
+                            Alumni Referral
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex justify-end">
+                    <button className="bg-white hover:bg-blue-50 text-blue-600 border border-blue-200 px-3 py-1 rounded-md text-sm mr-2">
+                      Save
+                    </button>
+                    <button className="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm">
+                      Apply Now
+                    </button>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-
-          {/* Progress Overview Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Progress Overview
-            </h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">Total Courses</p>
-                <p className="text-gray-700 font-bold">
-                  {progressOverview.totalCourses}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">Completed Courses</p>
-                <p className="text-gray-700 font-bold">
-                  {progressOverview.completedCourses}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">In Progress Courses</p>
-                <p className="text-gray-700 font-bold">
-                  {progressOverview.inProgressCourses}
-                </p>
-              </div>
+            <div className="p-4 bg-gray-50 text-center rounded-b-xl">
+              <a href="/jobs/create" className="text-blue-600 text-sm font-medium hover:underline">+ Post a job opportunity</a>
             </div>
           </div>
+        )}
 
-          {/* Community Engagement Card */}
-          <div className="bg-white p-6 rounded-lg shadow-md">
-            <h2
-              className="text-xl font-semibold mb-4"
-              style={{ color: theme.palette.primary.main }}
-            >
-              Community Engagement
-            </h2>
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">Forum Posts</p>
-                <p className="text-gray-700 font-bold">
-                  {communityEngagement.forumPosts}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">Comments</p>
-                <p className="text-gray-700 font-bold">
-                  {communityEngagement.comments}
-                </p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-gray-700">Likes</p>
-                <p className="text-gray-700 font-bold">
-                  {communityEngagement.likes}
-                </p>
-              </div>
+        {selectedTab === 'events' && (
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100">
+            <div className="p-5 border-b border-gray-100 flex justify-between items-center">
+              <h3 className="font-medium text-gray-900">Upcoming Events</h3>
+              <a href="/events" className="text-blue-600 text-sm hover:underline">View Calendar</a>
+            </div>
+            <div className="divide-y divide-gray-100">
+              {upcomingEvents.map((event, index) => (
+                <div key={index} className="p-5 hover:bg-gray-50 transition-colors">
+                  <div className="flex justify-between items-start">
+                    <div className="flex">
+                      <div className="flex-shrink-0 bg-blue-50 rounded-lg w-12 h-12 flex flex-col items-center justify-center mr-4">
+                        <span className="text-xs text-blue-700">{event.date.split(',')[0]}</span>
+                        <span className="text-sm font-bold text-blue-700">{event.date.split(', ')[1]}</span>
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900">{event.title}</h4>
+                        <p className="text-sm text-gray-600 mt-1">{event.time} • {event.location}</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center">
+                      <div className="mr-4">
+                        <span className="text-xs text-gray-500">Attendees</span>
+                        <p className="font-medium">{event.attendees}</p>
+                      </div>
+                      <button className="bg-white hover:bg-blue-50 text-blue-600 border border-blue-200 px-3 py-1 rounded-md text-sm">
+                        RSVP
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="p-4 bg-gray-50 text-center rounded-b-xl">
+              <a href="/events/create" className="text-blue-600 text-sm font-medium hover:underline">+ Create an event</a>
             </div>
           </div>
-        </div>
+        )}
       </div>
-    </div>
+    </DashboardLayout>
   );
 };
 

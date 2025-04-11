@@ -1,10 +1,10 @@
 import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom";
 
 const UserCard = ({
-  id, // Unique identifier for the user
-  category, // "student", "mentor", or "alumni"
+  id,
+  category,
   name,
   degree,
   batch,
@@ -18,134 +18,154 @@ const UserCard = ({
   onMentor,
 }) => {
   const theme = useTheme();
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
 
-  // Category-based Titles & Fields
   const isStudent = category === "student";
   const isAlumni = category === "alumni";
   const isMentor = category === "mentor";
 
-  // Determine the tag text based on the category
-  const tagText = isStudent
-    ? "Looking for a Mentor"
-    : isAlumni
-    ? "Open to be a Mentor"
-    : "Certified Mentor";
+  // Teal-focused color scheme
+  const categoryConfig = {
+    student: {
+      tagBg: "bg-teal-50",
+      tagText: "text-teal-700",
+      tagLabel: "Looking for a Mentor",
+      accent: "border-teal-400",
+      buttonBg: "bg-teal-500",
+      buttonHover: "hover:bg-teal-600",
+      iconColor: "text-teal-500"
+    },
+    alumni: {
+      tagBg: "bg-cyan-50",
+      tagText: "text-cyan-700",
+      tagLabel: "Open to be a Mentor",
+      accent: "border-cyan-400",
+      buttonBg: "bg-cyan-500",
+      buttonHover: "hover:bg-cyan-600",
+      iconColor: "text-cyan-500"
+    },
+    mentor: {
+      tagBg: "bg-emerald-50",
+      tagText: "text-emerald-700",
+      tagLabel: "Certified Mentor",
+      accent: "border-emerald-400",
+      buttonBg: "bg-emerald-500",
+      buttonHover: "hover:bg-emerald-600",
+      iconColor: "text-emerald-500"
+    }
+  };
 
-  // Handle click event to navigate to the detailed view
-  const handleClick = () => {
-    navigate(`/networking/${category}/${id}`); // Navigate to the detailed view
+  const config = categoryConfig[category];
+  
+  const handleCardClick = () => {
+    navigate(`/networking/${category}/${id}`);
+  };
+
+  const handleActionClick = (e, callback) => {
+    e.stopPropagation();
+    if (callback) callback();
   };
 
   return (
-    <div
-      className="px-6 py-6 max-w-[360px] bg-white w-full rounded-lg transition-all duration-300 hover:shadow-lg flex flex-col cursor-pointer" // Add cursor-pointer
-      style={{
-        color: theme.palette.primary.dark,
-        border: "1px solid",
-        borderColor: theme.palette.grey[300],
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-        height: "500px", // Fixed height for all cards
-      }}
-      onClick={handleClick} // Add onClick handler
+    <div 
+      className="relative rounded-xl overflow-hidden bg-white shadow hover:shadow-xl transition-all duration-300 w-full max-w-sm flex flex-col border border-gray-100"
+      onClick={handleCardClick}
     >
-      {/* Mentor Tag */}
-      <div
-        className="tag px-3 py-1 w-fit rounded-full font-semibold text-xs mb-4"
-        style={{
-          backgroundColor: isStudent
-            ? "#E3F2FD" // Light blue for students
-            : isAlumni
-            ? "#FFF3E0" // Light orange for alumni
-            : "#F1E8FF", // Light purple for mentors
-          color: isStudent
-            ? "#1976D2" // Dark blue for students
-            : isAlumni
-            ? "#EF6C00" // Dark orange for alumni
-            : "#6A1B9A", // Dark purple for mentors
-        }}
-      >
-        {tagText}
-      </div>
-
-      {/* User Info */}
-      <div className="flex justify-between items-center" style={{ height: "20%" }}>
-        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-gray-200">
-          <img
-            className="h-full w-full object-cover"
-            src={imageUrl}
-            alt={name}
-          />
+      {/* Top color bar to indicate category */}
+      <div className={`h-1.5 w-full ${config.buttonBg}`}></div>
+      
+      {/* Main content container */}
+      <div className="p-5 flex flex-col h-full">
+        {/* Tag */}
+        <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${config.tagBg} ${config.tagText} mb-4`}>
+          {config.tagLabel}
+        </span>
+        
+        {/* Profile section */}
+        <div className="flex items-center mb-5 gap-4">
+          <div className={`w-16 h-16 rounded-full overflow-hidden ${config.accent} border-2 flex-shrink-0 shadow-sm`}>
+            <img 
+              src={imageUrl} 
+              alt={name} 
+              className="w-full h-full object-cover"
+            />
+          </div>
+          
+          <div className="flex-1">
+            <h3 className="text-lg font-semibold text-gray-800">{name}</h3>
+            {isStudent ? (
+              <div>
+                <p className="text-sm text-gray-600">{degree}</p>
+                <p className="text-sm text-gray-500">Batch of {batch}</p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-sm text-gray-600">{position} at {company}</p>
+                <p className="text-sm text-gray-500">Batch of {batch}</p>
+              </div>
+            )}
+          </div>
         </div>
-        <div className="text-right">
-          <h1 className="text-lg font-semibold">{name}</h1>
-          {isStudent ? (
-            <>
-              <p className="text-sm text-gray-600">{degree}</p>
-              <p className="text-sm text-gray-600">Batch of {batch}</p>
-            </>
-          ) : (
-            <>
-              <p className="text-sm text-gray-600">{position}</p>
-              <p className="text-sm text-gray-600">{company}</p>
-              <p className="text-sm text-gray-600">Batch of {batch}</p>
-            </>
-          )}
+        
+        {/* Skills section */}
+        <div className="mb-4">
+          <h4 className={`text-sm font-semibold ${config.tagText} uppercase tracking-wider mb-2`}>
+            {isStudent ? "Top Skills" : "Expertise In"}
+          </h4>
+          <div className="flex flex-wrap gap-2">
+            {skills.slice(0, 5).map((skill, index) => (
+              <span
+                key={index}
+                className={`py-1 px-2 rounded-md text-xs font-medium ${config.tagBg} ${config.tagText}`}
+              >
+                {skill}
+              </span>
+            ))}
+            {skills.length > 5 && (
+              <span className="py-1 px-2 rounded-md text-xs font-medium bg-gray-100 text-gray-600">
+                +{skills.length - 5} more
+              </span>
+            )}
+          </div>
         </div>
-      </div>
-
-      {/* Skills / Expertise Section */}
-      <div className="mt-4" style={{ height: "25%" }}>
-        <h1 className="font-bold text-md mb-2">
-          {isStudent ? "Top Skills" : "Expertise In"}
-        </h1>
-        <div className="flex gap-2 flex-wrap">
-          {skills.map((skill, index) => (
-            <span
-              key={index}
-              className="py-1 px-3 rounded-full text-xs bg-gray-100 text-gray-700"
-            >
-              {skill}
-            </span>
-          ))}
+        
+        {/* Projects/Experience section */}
+        <div className="mb-5">
+          <h4 className={`text-sm font-semibold ${config.tagText} uppercase tracking-wider mb-2`}>
+            {isStudent ? "Projects" : "Experience"}
+          </h4>
+          <div className="space-y-2">
+            {(isStudent ? projects : experience).slice(0, 2).map((item, index) => (
+              <div 
+                key={index} 
+                className={`text-sm text-gray-700 bg-gray-50 px-3 py-2 rounded-md border-l-2 ${config.accent}`}
+              >
+                {item}
+              </div>
+            ))}
+            {(isStudent ? projects : experience).length > 2 && (
+              <p className="text-xs text-gray-500 italic pl-2">
+                +{(isStudent ? projects : experience).length - 2} more items
+              </p>
+            )}
+          </div>
         </div>
-      </div>
-
-      {/* Projects / Experience Section */}
-      <div className="mt-4" style={{ height: "25%" }}>
-        <h1 className="font-bold text-md mb-2">
-          {isStudent ? "Projects/Internships" : "Experience"}
-        </h1>
-        <div className="flex flex-wrap gap-2">
-          {(isStudent ? projects : experience).map((item, index) => (
-            <span
-              key={index}
-              className="py-1 px-3 rounded-full text-xs bg-gray-100 text-gray-700"
-            >
-              {item}
-            </span>
-          ))}
+        
+        {/* Action buttons with teal theme */}
+        <div className="mt-auto flex gap-3" onClick={e => e.stopPropagation()}>
+          <button
+            className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-medium text-white ${config.buttonBg} ${config.buttonHover} transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-400 shadow-sm`}
+            onClick={(e) => handleActionClick(e, onConnect)}
+          >
+            Connect
+          </button>
+          <button
+            className={`flex-1 py-2.5 px-4 rounded-lg text-sm font-medium bg-white border border-gray-200 ${config.tagText} hover:bg-gray-50 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-300 shadow-sm`}
+            onClick={(e) => handleActionClick(e, onMentor)}
+          >
+            {isStudent ? "Request Mentor" : "Offer Mentoring"}
+          </button>
         </div>
-      </div>
-
-      {/* Buttons */}
-      <div
-        className="mt-auto flex justify-center items-center gap-4"
-        style={{ height: "10%" }}
-        onClick={(e) => e.stopPropagation()} // Prevent click event from bubbling up to the card
-      >
-        <button
-          className="py-2 px-4 text-sm font-semibold bg-blue-50 text-blue-600 rounded-full hover:bg-blue-100 transition-all duration-300"
-          onClick={onConnect}
-        >
-          Connect
-        </button>
-        <button
-          className="py-2 px-4 text-sm font-semibold bg-purple-100 text-purple-600 rounded-full hover:bg-purple-200 transition-all duration-300"
-          onClick={onMentor}
-        >
-          {isStudent ? "Mentor" : "Ask to Mentor"}
-        </button>
       </div>
     </div>
   );

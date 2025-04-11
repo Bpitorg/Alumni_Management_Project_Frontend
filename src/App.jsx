@@ -33,7 +33,7 @@ import AchievementDetails from "./pages/Networking/AchievementDetails";
 import RecruiterDetails from "./pages/Jobs/RecruiterDetails";
 import AlumniWorkplaceDetails from "./pages/Jobs/AlumniWorkplaceData";
 import Home from "./pages/Home";
-
+import Profile from "./pages/Profile";
 const App = () => {
   return (
     <>
@@ -44,6 +44,7 @@ const App = () => {
         <Route path="/home" element={<Home/>} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/profile" element={<Profile />} />
         {/* Networking Routes */}
         <Route path="/networking">
           <Route index element={<Networking type="all" />} />

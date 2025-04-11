@@ -82,7 +82,7 @@ const Navbar = () => {
 
           {isLoggedIn ? (
             <Link
-              to="/home" // Replace with your logout path if needed
+              to="/profile" // Replace with your logout path if needed
               style={{ textDecoration: "none", color: "inherit" }}
             >
               <div
@@ -100,7 +100,7 @@ const Navbar = () => {
                 >
                   <IoPersonCircle size={24} />
                 </IconButton>
-                <span
+                <Link
                   style={{
                     fontSize: "0.9rem",
                     color: theme.palette.primary.main,
@@ -108,7 +108,7 @@ const Navbar = () => {
                   }}
                 >
                   Profile
-                </span>
+                </Link>
               </div>
             </Link>
           ) : (

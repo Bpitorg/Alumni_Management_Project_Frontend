@@ -4,6 +4,7 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   palette: {
     primary: {
+      gradient: "linear-gradient(180deg, #0E909E 0%, #0F9E99 100%)", // Gradient for cards
       main: "#0f9e99", // Main color (used for buttons, icons, etc.)
       dark: "#0c8b87", // Darker shade (used on hover)
       contrastText: "#ffffff", // White text for contrast on primary.main

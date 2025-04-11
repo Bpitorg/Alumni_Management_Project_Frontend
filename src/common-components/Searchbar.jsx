@@ -3,7 +3,7 @@ import { TextField, InputAdornment, AppBar } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useTheme } from "@mui/material/styles";
 
-const Searchbar = ({ searchPlaceholder, onSearch }) => {
+const Searchbar = ({ searchPlaceholder, onSearch, className }) => {
   const theme = useTheme();
 
   const handleSearchChange = (event) => {
@@ -12,9 +12,10 @@ const Searchbar = ({ searchPlaceholder, onSearch }) => {
   };
 
   return (
-    <div className="py-2 w-full px-3">
+    <div className={`py-2 w-full px-3 ${className || ""}`}>
       <AppBar
         position=""
+        
         sx={{
           border: "1px solid",
           borderColor: theme.palette.primary.main,

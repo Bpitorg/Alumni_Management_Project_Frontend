@@ -3,25 +3,65 @@ import SignInPic from "../assets/SignInPic 1.svg";
 import { useFormik } from "formik";
 import { useNavigate, Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
+import { UserService } from "../server"; // Import our UserService
 
 const LogIn = () => {
   const theme = useTheme();
-  const navigate = useNavigate(); // For redirecting
-  const [error, setError] = useState(""); // For error messages
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       emailOrUsername: "",
       password: "",
     },
-    onSubmit: (values) => {
-      // Simulate login without backend
-      if (values.emailOrUsername && values.password) {
-        console.log("Logging in with:", values);
-        navigate("/home"); // Redirect to home
-      } else {
-        setError("Please fill in all fields.");
+
+    onSubmit: async (values, { setSubmitting }) => {
+      try {
+        setIsSubmitting(true);
+        setError('');
+        
+        const result = await UserService.login(
+          {
+            email: values.emailOrUsername,
+            password: values.password
+          },
+          {
+            setErrors: (errors) => {
+              if (typeof errors === 'object') {
+                Object.entries(errors).forEach(([field, message]) => {
+                  formik.setFieldError(field, message);
+                });
+              } else {
+                setError(errors);
+              }
+            },
+            setLoading: setIsSubmitting
+          }
+        );
+
+        if (result.success) {
+          navigate('/home');
+        } else {
+          setError(result.message);
+        }
+      } catch (error) {
+        setError('An unexpected error occurred. Please try again.');
+      } finally {
+        setSubmitting(false);
+        setIsSubmitting(false);
       }
+    },
+    validate: (values) => {
+      const errors = {};
+      if (!values.emailOrUsername) {
+        errors.emailOrUsername = "Email or Username is required";
+      }
+      if (!values.password) {
+        errors.password = "Password is required";
+      }
+      return errors;
     },
   });
 
@@ -44,6 +84,12 @@ const LogIn = () => {
               className="flex w-full flex-col justify-center"
               onSubmit={formik.handleSubmit}
             >
+              {error && (
+                <div className="mb-4 p-2 text-center text-red-500">
+                  {error}
+                </div>
+              )}
+              
               <div className="flex w-full flex-col">
                 <label
                   className="m-2 text-lg"
@@ -64,6 +110,7 @@ const LogIn = () => {
                   placeholder="Enter your email or username"
                   onChange={formik.handleChange}
                   value={formik.values.emailOrUsername}
+                  disabled={isSubmitting}
                 />
               </div>
 
@@ -87,19 +134,21 @@ const LogIn = () => {
                   placeholder="Enter your password"
                   onChange={formik.handleChange}
                   value={formik.values.password}
+                  disabled={isSubmitting}
                 />
               </div>
               <div className="mt-4 flex w-full">
-                <Link
-                  to="/home"
+                <button
+                  type="submit"
                   className="font-medium flex justify-center w-full p-2 rounded-md transition-colors"
                   style={{
                     backgroundColor: theme.palette.primary.main,
                     color: theme.palette.primary.contrastText,
                   }}
+                  disabled={isSubmitting}
                 >
-                  LOG IN
-                </Link>
+                  {isSubmitting ? 'LOGGING IN...' : 'LOG IN'}
+                </button>
               </div>
             </form>
             <div>
